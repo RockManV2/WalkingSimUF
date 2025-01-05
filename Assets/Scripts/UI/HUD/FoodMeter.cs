@@ -10,6 +10,7 @@ public class FoodMeter : MonoBehaviour
     {
         _fill = GetComponent<Image>();
         PlayerResources.OnPlayerFoodChanged += SetFill;
+        PlayerResources.OnPlayerFoodChanged += (_) => { Debug.Log("food changed"); };
     }
     
     private void SetFill(int resource) =>
