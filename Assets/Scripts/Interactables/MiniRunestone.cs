@@ -8,7 +8,8 @@ public class MiniRunestone : MonoBehaviour, IInteractable
     
     public void Interact(GameObject player)
     {
-        if (!_textCanvas.gameObject.activeInHierarchy) return;
+    Debug.Log("Bomba");
+        if (_textCanvas.gameObject.activeInHierarchy) return;
 
         GameManager.Instance.RunestoneCount++;
         _textCanvas.gameObject.SetActive(true);

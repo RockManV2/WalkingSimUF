@@ -1,6 +1,10 @@
 
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Windows.Speech;
 
 public class Runestone : MonoBehaviour, IInteractable
@@ -33,6 +37,16 @@ public class Runestone : MonoBehaviour, IInteractable
     }
 
 
-    private void OnPhraseRecognized(PhraseRecognizedEventArgs args) =>
+    private void OnPhraseRecognized(PhraseRecognizedEventArgs args)
+    {
         Instantiate(_powerup, transform.position + transform.forward * 3, transform.rotation);
+        StartCoroutine(GoToEnd());
+    }
+        
+
+    private IEnumerator GoToEnd()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("EndScreen");
+    }
 }
