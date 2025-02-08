@@ -23,7 +23,8 @@ public class PlayerResources : MonoBehaviour
         OnPlayerWaterChanged.Invoke(_water);
         OnPlayerFoodChanged.Invoke(_food);
         OnPlayerStaminaChanged.Invoke(_stamina);
-        
+        OnPlayerFoodChanged += (_) => { Debug.Log("food changed"); };
+
         StartCoroutine(OnStaminaTick());
     }
 

@@ -12,9 +12,12 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
         if (_instance != null && _instance != this)
+        {
             Destroy(this);
-        else
-            _instance = this;
+            return;
+        }
+
+        _instance = this;
 
         _musicSource = _instance.gameObject.AddComponent<AudioSource>();
         _sfx = _instance.gameObject.AddComponent<AudioSource>();

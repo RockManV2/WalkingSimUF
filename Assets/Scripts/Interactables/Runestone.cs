@@ -10,14 +10,14 @@ using UnityEngine.Windows.Speech;
 public class Runestone : MonoBehaviour, IInteractable
 {
     [SerializeField] private TextMeshProUGUI textMesh;
-    [SerializeField] private string text1;
-    [SerializeField] private string text2;
+    [SerializeField] private string[] text1;
+    [SerializeField] private string[] text2;
     [SerializeField] private GameObject _powerup;
     private KeywordRecognizer _recognizer;
 
     private void Start()
     {
-        _recognizer = new KeywordRecognizer(new[] { "Double Jump"});
+        _recognizer = new KeywordRecognizer(new[] { "Super Jump"});
         _recognizer.OnPhraseRecognized += OnPhraseRecognized;
     }
 
@@ -26,27 +26,28 @@ public class Runestone : MonoBehaviour, IInteractable
         int count = GameManager.Instance.RunestoneCount;
         
         if(count < 3)
-            textMesh.text = text1;
+            StartCoroutine(DisplayTextInSequence(text1));
         else
         {
-            textMesh.text = text2;
+            StartCoroutine(DisplayTextInSequence(text2));
             _recognizer.Start();
         }
         
         SoundManager.PlaySound("pling");
     }
 
+    private IEnumerator DisplayTextInSequence(string[] text)
+    {
+        foreach (string txt in text)
+        {
+            textMesh.text = txt;
+            SoundManager.PlaySound("pling");
+            yield return new WaitForSeconds(4);
+        }
+    }
 
     private void OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
         Instantiate(_powerup, transform.position + transform.forward * 3, transform.rotation);
-        StartCoroutine(GoToEnd());
-    }
-        
-
-    private IEnumerator GoToEnd()
-    {
-        yield return new WaitForSeconds(5);
-        SceneManager.LoadScene("EndScreen");
     }
 }
