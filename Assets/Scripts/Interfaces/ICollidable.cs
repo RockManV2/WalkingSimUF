@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface ICollideable
+public interface ICollisionEventReciever
 {
     void Collide(GameObject player);
 }
