@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Windows.Speech;
 
-public class Runestone : MonoBehaviour, IInteractable
+public class Runestone : MonoBehaviour, IInteractEventReciever
 {
     [SerializeField] private TextMeshProUGUI textMesh;
     [SerializeField] private string[] text1;

@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-public class MiniRunestone : MonoBehaviour, IInteractable
+public class MiniRunestone : MonoBehaviour, IInteractEventReciever
 {
     [SerializeField] private GameObject _textCanvas;
     

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IInteractable
+public interface IInteractEventReciever
 {
     void Interact(GameObject player);
 }

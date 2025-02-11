@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class FruitTree : MonoBehaviour, IInteractable
+public class FruitTree : MonoBehaviour, IInteractEventReciever
 {
     public void Interact(GameObject player)
     {

@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class DoubleJumpPickup : MonoBehaviour, IInteractable
+public class DoubleJumpPickup : MonoBehaviour, IInteractEventReciever
 {
     public void Interact(GameObject player)
     {

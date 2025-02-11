@@ -23,7 +23,7 @@ public class RayInteractor : MonoBehaviour
         Physics.Raycast(_playerCameraTransform.position, _playerCameraTransform.forward, out RaycastHit hit, 10, ~_playerLayer);
         if (hit.transform == null) return;
         
-        hit.transform.GetComponent<IInteractable>()?.Interact(gameObject);
+        hit.transform.GetComponent<IInteractEventReciever>()?.Interact(gameObject);
     }
 
     private void OnDrawGizmos()
